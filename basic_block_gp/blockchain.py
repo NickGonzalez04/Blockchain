@@ -13,7 +13,7 @@ class Blockchain(object):
 
         # Create the genesis block
         # One is here sine its not created like the rest of the hashes
-        self.new_block(previous_hash=1, proof=100)
+        self.new_block(previous_hash='block_chain', proof=100)
 
     def new_block(self, proof, previous_hash=None):
         """
@@ -77,7 +77,7 @@ class Blockchain(object):
         # easier to work with and understand
 
         # TODO: Return the hashed block string in hexadecimal format
-        pass
+        return hex_hash
 
     @property
     def last_block(self):
@@ -96,9 +96,9 @@ class Blockchain(object):
         while self.valid_proof(block_string, proof) is False:
             proof += 1
 
+        # return proof
         return proof
 
-        # return proof
 
     @staticmethod
     def valid_proof(block_string, proof):
@@ -113,10 +113,10 @@ class Blockchain(object):
         :return: True if the resulting hash is a valid proof, False otherwise
         """
         guess = f'{block_string}{proof}'.encode()
-        #look at hash anc convert into hexadecimal 
+        #look at hash and convert into hexadecimal 
         guess_hash = hashlib.sha256(guess).hexdigest()
-        # return True or False
-        return guess_hash[:3] == "000"
+        # return True or False if has 3 leading zeros
+        return guess_hash[:6] == "000000"
 
 # Instantiate our Node
 app = Flask(__name__)
@@ -126,8 +126,8 @@ node_identifier = str(uuid4()).replace('-', '')
 
 # Instantiate the Blockchain
 blockchain = Blockchain()
-print(blockchain.chain())
-print()
+print(blockchain.chain)
+print(blockchain.hash(blockchain.last_block))
 
 
 @app.route('/mine', methods=['GET'])
@@ -137,9 +137,10 @@ def mine():
     # Forge the new Block by adding it to the chain with the proof
     previous_hash = blockchain.hash(blockchain.last_block)
     new_block = blockchain.new_block(proof,previous_hash)
+
     response = {
         # TODO: Send a JSON response with the new block
-        "block": new_block
+        "block": new_block,
     }
 
     return jsonify(response), 200

@@ -29,7 +29,7 @@ Create a client application that will:
 * Print a message indicating the success or failure response from the server
 * Add any coins granted to a simple integer total, and print the amount of coins the client has earned
 * Continue mining until the app is interrupted.
-* Change the name in `my_id.txt` to your name
+* [x] Change the name in `my_id.txt` to your name
 * (Stretch) Handle non-json responses sent by the server in the event of an error, without crashing the miner
 * Stretch: Add a timer to keep track of how long it takes to find a proof
 
