@@ -26,8 +26,8 @@ Create a client application that will:
 * [X] Run the `proof_of_work` function until a valid proof is found, validating or rejecting each attempt.  Use a copy of `valid_proof` to assist.
 * Print messages indicating that this has started and finished.
 * [X] Modify it to generate proofs with *6* leading zeroes.
-* Print a message indicating the success or failure response from the server
-* Add any coins granted to a simple integer total, and print the amount of coins the client has earned
+* [X] Print a message indicating the success or failure response from the server
+* [X] Add any coins granted to a simple integer total, and print the amount of coins the client has earned
 * Continue mining until the app is interrupted.
 * [x] Change the name in `my_id.txt` to your name
 * (Stretch) Handle non-json responses sent by the server in the event of an error, without crashing the miner

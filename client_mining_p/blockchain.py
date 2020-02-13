@@ -85,22 +85,6 @@ class Blockchain(object):
     def last_block(self):
         return self.chain[-1]
 
-    # def proof_of_work(self, block):
-    #     """
-    #     Simple Proof of Work Algorithm
-    #     Stringify the block and look for a proof.
-    #     Loop through possibilities, checking each one against `valid_proof`
-    #     in an effort to find a number that is a valid proof
-    #     :return: A valid proof for the provided block
-    #     """
-    #     block_string = json.dumps(block, sort_keys=True)
-    #     proof = 0
-    #     while self.valid_proof(block_string, proof) is False:
-    #         proof += 1
-
-    #     # return proof
-    #     return proof
-
 
     @staticmethod
     def valid_proof(block_string, proof):
@@ -118,7 +102,7 @@ class Blockchain(object):
         #look at hash and convert into hexadecimal 
         guess_hash = hashlib.sha256(guess).hexdigest()
         # return True or False if has 3 leading zeros
-        return guess_hash[:3] == "000"
+        return guess_hash[:6] == "000000"
 
 # Instantiate our Node
 app = Flask(__name__)
