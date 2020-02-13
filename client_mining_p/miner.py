@@ -1,8 +1,8 @@
 import hashlib
 import requests
-
 import sys
 import json
+from time import time
 
 #TODO not in class
 
@@ -15,11 +15,14 @@ def proof_of_work(last_block):
     :return: A valid proof for the provided block
     """
     #Stringify the block
+    print('MINNING...')
+    start_time = time()
     block_string = json.dumps(last_block, sort_keys=True)
     proof = 0
     while valid_proof(block_string, proof) is False:
         proof += 1
-
+    end_time = time()
+    print (f"runtime: {end_time - start_time} seconds")
         # return proof
     return proof
 
@@ -81,6 +84,7 @@ if __name__ == '__main__':
             print("Response returned:")
             print(r)
             break
+
         if data['message'] == 'New Block Forged':
         # TODO: If the server responds with a 'message' 'New Block Forged'
         # add 1 to the number of coins mined and print it.  Otherwise,
