@@ -9,9 +9,9 @@ Furthermore, the amount of work needed to actually mine a block is a bit low.  W
 
 *Server*
 Modify the server we created to:
-* Remove the `proof_of_work` function from the server.
-* Change `valid_proof` to require *6* leading zeroes.
-* Add an endpoint called `last_block` that returns the last block in the chain
+* [x] Remove the `proof_of_work` function from the server.
+* [X] Change `valid_proof` to require *6* leading zeroes.
+* [X] Add an endpoint called `last_block` that returns the last block in the chain
 * Modify the `mine` endpoint to instead receive and validate or reject a new proof sent by a client.
     * It should accept a POST
     * Use `data = request.get_json()` to pull the data out of the POST
@@ -22,10 +22,10 @@ Modify the server we created to:
 
 *Client Mining*
 Create a client application that will:
-* Get the last block from the server
-* Run the `proof_of_work` function until a valid proof is found, validating or rejecting each attempt.  Use a copy of `valid_proof` to assist.
+* [X] Get the last block from the server
+* [X] Run the `proof_of_work` function until a valid proof is found, validating or rejecting each attempt.  Use a copy of `valid_proof` to assist.
 * Print messages indicating that this has started and finished.
-* Modify it to generate proofs with *6* leading zeroes.
+* [X] Modify it to generate proofs with *6* leading zeroes.
 * Print a message indicating the success or failure response from the server
 * Add any coins granted to a simple integer total, and print the amount of coins the client has earned
 * Continue mining until the app is interrupted.
